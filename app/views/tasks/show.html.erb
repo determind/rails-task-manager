@@ -1,19 +1,29 @@
 <div>
-  <h1> <% task.title %> </h1>
+  <h1> <%= @tasks.title %> </h1>
 </div>
 
 <div>
-  <p> <% task.details %> </p>
+  <br>
+  <%= link_to "Edit task", edit_restaurant_path %>
 </div>
 
-<% if task.completed == true %>
+<div>
+  <p> <%= @tasks.details %> </p>
+</div>
+
+<% if @tasks.completed == true %>
   <div>
-    <input type="checkbox" id="task_completed" name="task_completed" checked>
+    <input type="checkbox" id="task_completed" name="task_completed" checked disabled>
     <label for="task_completed">This task is completed</label>
   </div>
 <% else %>
   <div>
-    <input type="checkbox" id="task_completed" name="task_completed">
+    <input type="checkbox" id="task_completed" name="task_completed" disabled>
     <label for="task_completed">This task is not completed yet</label>
   </div>
 <% end %>
+
+<div>
+  <br>
+  <%= link_to "Back to list", tasks_path %>
+</div>

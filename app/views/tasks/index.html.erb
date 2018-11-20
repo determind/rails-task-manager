@@ -2,14 +2,23 @@
 
 <% @tasks.each do |task| %>
   <% if task.completed == true %>
+
     <div>
       <input type="checkbox" id="<%= task.title %>" name="<%= task.title %>" checked disabled>
-      <label for="<%= task.title %>"> <%= link_to task.title, task_path(task) %> </label>
+      <label for="<%= task.title %>"> <%= link_to task.title, task_path(task) %> - <%= link_to "Delete", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %> </label>
     </div>
+
   <% else %>
+
     <div>
       <input type="checkbox" id="<%= task.title %>" name="<%= task.title %>" disabled>
-      <label for="<%= task.title %>"> <%= link_to task.title, task_path(task) %> </label>
+      <label for="<%= task.title %>"> <%= link_to task.title, task_path(task) %> - <%= link_to "Delete", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>  </label>
     </div>
+
   <% end %>
 <% end %>
+
+<div>
+  <br>
+  <%= link_to "+ Add a new task", new_task_path %>
+</div>
